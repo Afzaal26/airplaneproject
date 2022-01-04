@@ -1,0 +1,212 @@
+﻿@model AirlineManagementSystemOOAD.Models.TicketBook
+
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div id="booking" class="section">
+        <div class="section-center">
+            <div class="container">
+                <div class="row">
+                    <div class="booking-form">
+                        <form>
+                            <div class="form-group">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <span class="form-label">First Name</span>
+                                            <input class="form-control" type="text" placeholder="FirstName" id="FirstName" name="FirstName">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <span class="form-label">Last Name</span>
+                                            <input class="form-control" type="text" placeholder="Last Name" id="LastName" name="LastName">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <span class="form-label">Date Of Birth</span>
+                                            <input class="form-control" type="date" required id="Dob" name="Dob">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <span class="form-label" id="Gender">Gender</span>
+                                                <select class="form-control" name="Gender">
+                                                    <option>-Select-</option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                </select>
+                                                <span class="select-arrow"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <span class="form-label">CNIC No.</span>
+                                            <input class="form-control" type="text" placeholder="CNIC NUMBER" id="cnic" name="CNIC">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <span class="form-label">Phone No.</span>
+                                            <input class="form-control" type="text" placeholder="PHONE NUMBER" id="phone" name="Phone">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <span class="form-label" id="flyingfrom">Flying From</span>
+                                            <select class="form-control" name="FlyingFrom">
+                                                <option>-Select-</option>
+                                                <option>Karachi</option>
+                                                <option>Islamabad</option>
+                                                <option>Lahore</option>
+                                                <option>Multan</option>
+                                                <option>Rawalpindi</option>
+                                                <option>Sialkot</option>
+                                            </select>
+                                            <span class="select-arrow"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <span class="form-label" id="flyingto">Flying To</span>
+                                                <select class="form-control" name="FlyingTo">
+                                                    <option>-Select-</option>
+                                                    <option>Karachi</option>
+                                                    <option>Islamabad</option>
+                                                    <option>Lahore</option>
+                                                    <option>Multan</option>
+                                                    <option>Rawalpindi</option>
+                                                    <option>Sialkot</option>
+                                                </select>
+                                                <span class="select-arrow"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <span class="form-label">Departing</span>
+                                                <input class="form-control" type="date" required id="dept_date" name="Dept">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <span class="form-label">Returning</span>
+                                                <input class="form-control" type="date" required id="return_date" name="Returning">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <span class="form-label">Adults (18+)</span>
+                                            <select class="form-control" id="adult" name="Adults">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                            </select>
+                                            <span class="select-arrow"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <span class="form-label">Children</span>
+                                                <select class="form-control" id="child" name="Child">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                                <span class="select-arrow"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <span class="form-label" id="travelclass">Travel Class</span>
+                                                <select class="form-control" name="FClass">
+                                                    <option>Economy class</option>
+                                                    <option>Business class</option>
+                                                    <option>First class</option>
+                                                </select>
+                                                <span class="select-arrow"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <span class="form-label">Total Amount</span>
+                                                <input class="form-control" disabled type="text" placeholder="0" id="totalamount" name="TotalAmount">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <span class="form-label">Payment Method</span>
+                                            <select class="form-control" id="paymentmethod" name="paymentmethod">
+                                                <option>-Select-</option>
+                                                <option>Credit/Debit</option>
+                                                <option>Easy Paisa</option>
+                                            </select>
+                                            <span class="select-arrow"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <span class="form-label">Card Number</span>
+                                            <input class="form-control" type="text" placeholder="0" id="cardno" name="cardno">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-btn">
+                                            <button class="submit-btn">Book</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+
+    </script>
+}

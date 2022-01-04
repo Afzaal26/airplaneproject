@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/slider.css" rel="stylesheet" />
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/responsiveslides.min.js"></script>
+    <link href="~/csssss/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/csssss/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <div class="header">
+            <div class="wrap">
+                <div class="logo"><a href="index.html"><img src="Desktop\OOAD\airline template\web\images/logo.png" alt="" /></a></div>
+                <div class="con-right">
+                    <div class="grid1-l-img">
+                        <img src="images/contact.png" alt="">
+                        <button>Sign Out</button>
+                    </div>
+                    <div class="grid1-l-desc">
+                        <p>Contact : +91 00000-55555</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <div class="wrap">
+                <ul id="nav">
+                    <li>@Html.ActionLink("Home", "Index", "Customer")</li>
+                    <li>@Html.ActionLink("Booking", "Booking", "Customer")</li>
+                    <li>@Html.ActionLink("About Us", "About", "Customer")</li>
+                    <li>@Html.ActionLink("Sign Out", "Login", "Customer")</li>
+                </ul>
+            </div>
+        </div>
+        @RenderBody()
+
+
+        
+
+    </div>
+    <div>
+
+    </div>
+</body>
+</html>

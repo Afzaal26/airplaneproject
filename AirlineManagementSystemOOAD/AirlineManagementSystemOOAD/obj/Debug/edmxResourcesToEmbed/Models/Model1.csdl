@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="airline_managementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Airline">
+    <Key>
+      <PropertyRef Name="Airline_ID" />
+    </Key>
+    <Property Name="Airline_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Airline_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Booking_Details" Relationship="Self.FK__Booking_D__Airli__20C1E124" FromRole="Airlines" ToRole="Booking_Details" />
+  </EntityType>
+  <EntityType Name="Airport">
+    <Key>
+      <PropertyRef Name="Airport_ID" />
+    </Key>
+    <Property Name="Airport_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Airport_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Booking_Details" Relationship="Self.FK__Booking_D__Airpo__21B6055D" FromRole="Airports" ToRole="Booking_Details" />
+  </EntityType>
+  <EntityType Name="Booking_Details">
+    <Key>
+      <PropertyRef Name="Detail_Id" />
+    </Key>
+    <Property Name="Detail_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Airline_ID" Type="Int32" />
+    <Property Name="Airport_ID" Type="Int32" />
+    <Property Name="Booking_ID" Type="Int32" />
+    <Property Name="Customer_ID" Type="Int32" />
+    <Property Name="Time_Period_ID" Type="Int32" />
+    <Property Name="Total" Type="Int32" Nullable="false" />
+    <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Airline" Relationship="Self.FK__Booking_D__Airli__20C1E124" FromRole="Booking_Details" ToRole="Airlines" />
+    <NavigationProperty Name="Airport" Relationship="Self.FK__Booking_D__Airpo__21B6055D" FromRole="Booking_Details" ToRole="Airports" />
+    <NavigationProperty Name="Booking" Relationship="Self.FK__Booking_D__Booki__22AA2996" FromRole="Booking_Details" ToRole="Bookings" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Booking_D__Custo__239E4DCF" FromRole="Booking_Details" ToRole="Customers" />
+    <NavigationProperty Name="TimePeriod" Relationship="Self.FK__Booking_D__Time___24927208" FromRole="Booking_Details" ToRole="TimePeriod" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Booking_ID" />
+    </Key>
+    <Property Name="Booking_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customer_ID" Type="Int32" />
+    <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Booking_Details" Relationship="Self.FK__Booking_D__Booki__22AA2996" FromRole="Bookings" ToRole="Booking_Details" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Bookings__Custom__1DE57479" FromRole="Bookings" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Customer_ID" />
+    </Key>
+    <Property Name="Customer_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="C_Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Orgazanization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Of_Birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Booking_Details" Relationship="Self.FK__Booking_D__Custo__239E4DCF" FromRole="Customers" ToRole="Booking_Details" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK__Bookings__Custom__1DE57479" FromRole="Customers" ToRole="Bookings" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TimePeriod">
+    <Key>
+      <PropertyRef Name="Time_Period_ID" />
+    </Key>
+    <Property Name="Time_Period_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Booking_Details" Relationship="Self.FK__Booking_D__Time___24927208" FromRole="TimePeriod" ToRole="Booking_Details" />
+  </EntityType>
+  <Association Name="FK__Booking_D__Airli__20C1E124">
+    <End Role="Airlines" Type="Self.Airline" Multiplicity="0..1" />
+    <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Airlines">
+        <PropertyRef Name="Airline_ID" />
+      </Principal>
+      <Dependent Role="Booking_Details">
+        <PropertyRef Name="Airline_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking_D__Airpo__21B6055D">
+    <End Role="Airports" Type="Self.Airport" Multiplicity="0..1" />
+    <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Airports">
+        <PropertyRef Name="Airport_ID" />
+      </Principal>
+      <Dependent Role="Booking_Details">
+        <PropertyRef Name="Airport_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking_D__Booki__22AA2996">
+    <End Role="Bookings" Type="Self.Booking" Multiplicity="0..1" />
+    <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="Booking_ID" />
+      </Principal>
+      <Dependent Role="Booking_Details">
+        <PropertyRef Name="Booking_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking_D__Custo__239E4DCF">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Customer_ID" />
+      </Principal>
+      <Dependent Role="Booking_Details">
+        <PropertyRef Name="Customer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking_D__Time___24927208">
+    <End Role="TimePeriod" Type="Self.TimePeriod" Multiplicity="0..1" />
+    <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TimePeriod">
+        <PropertyRef Name="Time_Period_ID" />
+      </Principal>
+      <Dependent Role="Booking_Details">
+        <PropertyRef Name="Time_Period_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bookings__Custom__1DE57479">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Bookings" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Customer_ID" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="Customer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="airline_managementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Airlines" EntityType="Self.Airline" />
+    <EntitySet Name="Airports" EntityType="Self.Airport" />
+    <EntitySet Name="Booking_Details" EntityType="Self.Booking_Details" />
+    <EntitySet Name="Bookings" EntityType="Self.Booking" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Logins" EntityType="Self.Login" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TimePeriods" EntityType="Self.TimePeriod" />
+    <AssociationSet Name="FK__Booking_D__Airli__20C1E124" Association="Self.FK__Booking_D__Airli__20C1E124">
+      <End Role="Airlines" EntitySet="Airlines" />
+      <End Role="Booking_Details" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking_D__Airpo__21B6055D" Association="Self.FK__Booking_D__Airpo__21B6055D">
+      <End Role="Airports" EntitySet="Airports" />
+      <End Role="Booking_Details" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking_D__Booki__22AA2996" Association="Self.FK__Booking_D__Booki__22AA2996">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="Booking_Details" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking_D__Custo__239E4DCF" Association="Self.FK__Booking_D__Custo__239E4DCF">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Booking_Details" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking_D__Time___24927208" Association="Self.FK__Booking_D__Time___24927208">
+      <End Role="TimePeriod" EntitySet="TimePeriods" />
+      <End Role="Booking_Details" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bookings__Custom__1DE57479" Association="Self.FK__Bookings__Custom__1DE57479">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <EntitySet Name="TicketBooks" EntityType="airline_managementModel.TicketBook" />
+  </EntityContainer>
+  <EntityType Name="TicketBook">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dob" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CNIC" Type="Int64" />
+    <Property Name="Phone" Type="Int64" />
+    <Property Name="FlyingFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FlyingTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dept" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Returning" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Adults" Type="Int32" />
+    <Property Name="Child" Type="Int32" />
+    <Property Name="FClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SeatsAvailable" Type="Int32" />
+    <Property Name="TotalAmount" Type="Int32" />
+  </EntityType>
+</Schema>

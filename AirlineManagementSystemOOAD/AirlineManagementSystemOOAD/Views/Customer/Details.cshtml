@@ -1,0 +1,109 @@
+﻿@model IEnumerable<AirlineManagementSystemOOAD.Models.TicketBook>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CNIC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlyingFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlyingTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dept)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Returning)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adults)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Child)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FClass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeatsAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CNIC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlyingFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlyingTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dept)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Returning)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adults)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Child)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FClass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatsAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalAmount)
+        </td>
+        
+    </tr>
+}
+
+</table>
